@@ -58,6 +58,24 @@ ethernet_interfaces:
   peer: s1-leaf4
   peer_interface: Ethernet3
   peer_type: leaf
+- name: Ethernet9
+  description: L2_s1-leaf5_Ethernet3
+  shutdown: false
+  channel_group:
+    id: 9
+    mode: active
+  peer: s1-leaf5
+  peer_interface: Ethernet3
+  peer_type: leaf
+- name: Ethernet10
+  description: L2_s1-leaf6_Ethernet3
+  shutdown: false
+  channel_group:
+    id: 9
+    mode: active
+  peer: s1-leaf6
+  peer_interface: Ethernet3
+  peer_type: leaf
 - name: Ethernet7
   description: P2P_WANCORE_Ethernet2
   shutdown: false
@@ -92,7 +110,7 @@ local_users:
 - name: arista
   privilege: 15
   role: network-admin
-  sha512_password: $6$arista$RArU/OEQzi81GpjRc8tQz6nDYbOoQGCq02vnj4AeNZrW6wSGSN6dyDw1/DzCDi5HvsTWHXFmASMPSy7iJED.T/
+  sha512_password: $6$arista$BbgdBByV2Fm7spjLwHua0QGtWjcBKb7.lhVS9JPGbiXrQUjJO04pfumhYcLZ.CSmv15UhdulTr06yZ.KOt9sW/
   ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC89QJpArTdhJhbSm5zUTgWvFLX+jjSEOYU6ncZGUkTDaPR9RmszgmHy8XQfzFDnZLbh3lECh5V6BTlfMCGZM/x7pC9u1vQxB+vTq8cfWJKiRBWJ98ZPEPVPw6JTqKH9cQ4m2Vm6KpCJX6SZvaoBhO9DMMePybzGHESRNc5Wtje6aEQbduVaA4KnkfqiYkc0Kfwv5v656F1FgFwY1h76jbkha63TJpyX88ZEA320HSN1O3MDa2nRG6HU/sIKR7ScPlcMsBPkNEDwqmN3ldSFXnVMh9rWxXG5OTuCPCHjLGsczBJ+rc6otiqAEbAMPyyaM7Nf6zCj5tEBTNegFb6Cy0r
     arista@perth-avd-workshop-28-343dfa4e-eos
 loopback_interfaces:
@@ -151,6 +169,15 @@ port_channel_interfaces:
     mode: trunk
     trunk:
       allowed_vlan: '20'
+- name: Port-Channel9
+  description: L2_RACK3_Port-Channel2
+  shutdown: false
+  mlag: 9
+  switchport:
+    enabled: true
+    mode: trunk
+    trunk:
+      allowed_vlan: 10,20
 router_ospf:
   process_ids:
   - id: 100
